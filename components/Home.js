@@ -8,6 +8,7 @@ import {
   ButtonStyled,
   HomeBackground,
   OverLayContainer,
+  Title,
   TopStyling,
 } from "../styles";
 
@@ -21,7 +22,7 @@ const Home = ({ navigation }) => {
     >
       <OverLayContainer>
         <TopStyling>
-          <Title>More Than a Meat</Title>
+          <Title>Trips</Title>
         </TopStyling>
         <BottomStyling>
           <ButtonStyled onPress={() => navigation.navigate("Signup")}>

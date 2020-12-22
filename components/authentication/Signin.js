@@ -18,7 +18,10 @@ const Signin = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.signin(user);
-    if (authStore.user) navigation.replace("Signup");
+    if (authStore.user) {
+      navigation.replace("Home");
+      console.log("helllo");
+    }
   };
   return (
     <AuthContainer>
