@@ -9,6 +9,7 @@ import {
   AuthOther,
   AuthTextInput,
 } from "../../styles";
+import Home from "../Home";
 import authStore from "../stores/authStore";
 
 const Signup = ({ navigation }) => {
@@ -21,7 +22,7 @@ const Signup = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.signup(user);
-    if (authStore.user) navigation.replace("Signin");
+    if (authStore.user) navigation.replace(Home);
   };
   return (
     <AuthContainer>

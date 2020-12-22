@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import decode from "jwt-decode";
 import instance from "./instance";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class AuthStore {
   user = null;
@@ -8,9 +9,12 @@ class AuthStore {
     makeAutoObservable(this);
   }
   setUser = async (token) => {
-    await AsyncStorage.setItem("myToken", token);
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-    this.user = decode(token);
+    try {
+      console.log(this.user);
+      await AsyncStorage.setItem("myToken", token);
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+      this.user = decode(token);
+    } catch (error) {}
   };
 
   signup = async (userData) => {
