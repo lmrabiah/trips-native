@@ -35,11 +35,11 @@ class AuthStore {
     }
   };
 
-  // signout = () => {
-  //   delete instance.defaults.headers.common.Authorization;
-  //   localStorage.removeItem("myToken");
-  //   this.user = null;
-  // };
+  signout = () => {
+    delete instance.defaults.headers.common.Authorization;
+    AsyncStorage.removeItem("myToken");
+    this.user = null;
+  };
 
   checkForToken = async () => {
     const token = await AsyncStorage.getItem("myToken");

@@ -9,7 +9,7 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     <Navigator
-      initialRouteName="Signin"
+      initialRouteName="Home"
       screenOptions={{
         headerTintColor: "white",
         headerStyle: {
