@@ -23,11 +23,14 @@ const theme = {
 };
 export default function App() {
   return (
+    <View style={styles.container}>
+      <NavigationContainer>
+        <Home />
+      </NavigationContainer>
     <ThemeProvider theme={theme.light}>
       <NavigationContainer>
         <RootNavigator />
       </NavigationContainer>
-
       <StatusBar style="auto" />
     </ThemeProvider>
   );
