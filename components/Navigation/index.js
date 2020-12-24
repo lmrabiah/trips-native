@@ -5,11 +5,15 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
+import ProfileList from "../../components/ProfileList";
+
+import EditProfileModel from "../EditProfileModel";
+
 const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     <Navigator
-      initialRouteName="Signin"
+      initialRouteName="Profile"
       screenOptions={{
         headerTintColor: "white",
         headerStyle: {
@@ -37,6 +41,16 @@ const RootNavigator = () => {
         options={{
           headerShown: false,
         }}
+      />
+      <Screen
+        name="Profile"
+        component={ProfileList}
+        options={{ headerShown: false }}
+      />
+      <Screen
+        name="EditProfile"
+        component={EditProfileModel}
+        options={{ headerShown: false }}
       />
     </Navigator>
   );

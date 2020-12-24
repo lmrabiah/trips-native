@@ -9,7 +9,7 @@ import {
   AuthOther,
   AuthTextInput,
 } from "../../styles";
-import authStore from "../stores/authStore";
+import authStore from "../../stores/authStore";
 
 const Signin = ({ navigation }) => {
   const [user, setUser] = useState({
