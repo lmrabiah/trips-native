@@ -13,7 +13,11 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     <Navigator
+<<<<<<< HEAD
       initialRouteName="Profile"
+=======
+      initialRouteName="Home"
+>>>>>>> 3547e70ceced7f985016fd0b47f27931801987a2
       screenOptions={{
         headerTintColor: "white",
         headerStyle: {

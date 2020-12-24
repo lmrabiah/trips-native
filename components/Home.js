@@ -1,4 +1,5 @@
 import { observer } from "mobx-react";
+import { Button, Icon } from "native-base";
 import React from "react";
 
 // Styling
@@ -11,6 +12,7 @@ import {
   Title,
   TopStyling,
 } from "../styles";
+import authStore from "./stores/authStore";
 
 const Home = ({ navigation }) => {
   return (
@@ -28,6 +30,14 @@ const Home = ({ navigation }) => {
           <ButtonStyled onPress={() => navigation.navigate("Signup")}>
             Click here to skip
           </ButtonStyled>
+          <Button>
+            <Icon
+              onPress={authStore.signout}
+              onPress={() => navigation.replace("Signin")}
+              type="MaterialCommunityIcons"
+              name="logout"
+            />
+          </Button>
         </BottomStyling>
       </OverLayContainer>
     </HomeBackground>
