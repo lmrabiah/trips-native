@@ -12,7 +12,7 @@ import {
   Title,
   TopStyling,
 } from "../styles";
-import authStore from "./stores/authStore";
+import authStore from "../stores/authStore";
 
 const Home = ({ navigation }) => {
   return (
@@ -27,7 +27,7 @@ const Home = ({ navigation }) => {
           <Title>Trips</Title>
         </TopStyling>
         <BottomStyling>
-          <ButtonStyled onPress={() => navigation.navigate("Signup")}>
+          <ButtonStyled onPress={() => navigation.navigate("Profile")}>
             Click here to skip
           </ButtonStyled>
           <Button>
