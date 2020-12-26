@@ -27,6 +27,7 @@ const Signup = ({ navigation }) => {
       Alert.alert("The username already exists");
     }
   };
+
   return (
     <AuthContainer>
       <AuthButton onPress={handleSubmit}>

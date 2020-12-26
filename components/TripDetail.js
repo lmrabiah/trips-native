@@ -46,11 +46,11 @@ function TripDetail({ route, navigation }) {
       </Right>
 
       <Left>
-        {/* <Text>
+        <Text>
           {trip.title} {"\n"}
         </Text>
 
-        <Text>{trip.decription}</Text> */}
+        <Text>{trip.decription}</Text>
         <Button onPress={handlePress}>
           <Text>Delete </Text>
         </Button>
@@ -59,7 +59,7 @@ function TripDetail({ route, navigation }) {
             navigation.navigate(
               "UpdateTripModel",
               { navigation: navigation },
-              { selectedTrip: trip }
+              { OldTrip: trip }
             )
           }
         >
