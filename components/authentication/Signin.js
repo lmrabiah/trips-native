@@ -19,7 +19,7 @@ const Signin = ({ navigation }) => {
   const handleSubmit = async () => {
     await authStore.signin(user);
     if (authStore.user) {
-      navigation.replace("Home");
+      navigation.replace("Profile");
       console.log("helllo");
     }
   };

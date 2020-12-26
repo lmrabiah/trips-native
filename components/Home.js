@@ -12,7 +12,7 @@ import {
   Title,
   TopStyling,
 } from "../styles";
-import authStore from "./stores/authStore";
+import authStore from "../stores/authStore";
 
 const Home = ({ navigation }) => {
   return (

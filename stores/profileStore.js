@@ -4,6 +4,7 @@ import { makeAutoObservable } from "mobx";
 class ProfileStore {
   profiles = [];
   loading = true;
+  userProfile = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -24,14 +25,10 @@ class ProfileStore {
       const formData = new FormData();
       for (const key in updatedProfile)
         formData.append(key, updatedProfile[key]);
-      await instance.put(`/profile/${updatedProfile.id}`, formData);
-      const profile = this.profiles.find(
-        (profile) => profile.id === updatedProfile.id
-      );
+      await instance.put(`/profile/${this.userProfile.id}`, formData);
+      const profile = this.userProfile;
       for (const key in updatedProfile) profile[key] = updatedProfile[key];
       profile.image = URL.createObjectURL(updatedProfile.image);
-
-      for (const key in profile) profile[key] = updatedProfile[key];
     } catch (error) {
       console.log("ProfileStore -> updateProfile -> error", error);
     }
@@ -40,6 +37,18 @@ class ProfileStore {
   getProfileById = (profileId) =>
     this.profiles.find((profile) => profile.id === profileId);
 }
+
+createProfile = async (newProfile) => {
+  try {
+    const formData = new FormData();
+    for (const key in newProfile) formData.append(key, newProfile[key]);
+    const res = await instance.post(`/profile/${user.id}/profiles`, formData);
+    this.profiles.push(res.data);
+    user.profiles.push({ id: res.data.id });
+  } catch (error) {
+    console.log("ProfileStore -> createProfile -> error", error);
+  }
+};
 
 const profileStore = new ProfileStore();
 profileStore.fetchProfile();

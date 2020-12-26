@@ -22,7 +22,7 @@ const Signup = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.signup(user);
-    if (authStore.user) navigation.replace(Home);
+    if (authStore.user) navigation.replace("Profile");
   };
   return (
     <AuthContainer>
