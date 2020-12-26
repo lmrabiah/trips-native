@@ -12,14 +12,18 @@ import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 import TripList from "./TripList";
 
-const UpdateTripModel = ({ navigation, selectedTrip }) => {
+const UpdateTripModel = ({ navigation, OldTrip }) => {
   const [trip, setTrip] = useState({
-    selectedTrip,
+    OldTrip,
   });
 
   const handleSubmit = async () => {
     await tripStore.updateTrip(trip);
-    navigation.navigate("TripList");
+    if (tripStore.trips) navigation.navigate("TripList");
+  };
+
+  const handleChange = (event) => {
+    setTrip({ ...trip, [event.target.title]: event.target.value });
   };
 
   const [image, setImage] = useState(null);
@@ -53,10 +57,11 @@ const UpdateTripModel = ({ navigation, selectedTrip }) => {
     <>
       <AuthContainer>
         <AuthTextInput
-          onChangeText={(title) => setTrip({ ...trip, title })}
-          placeholder="Title"
+          onChangeText={handleChange}
+          // placeholder="title"
           placeholderTextColor="#A6AEC1"
-          autoCapitalize="none"
+          // autoCapitalize="none"
+          // value={trip.title}
         />
         <AuthTextInput
           //   defaultValue={selectedTrip.description}
@@ -81,7 +86,7 @@ const UpdateTripModel = ({ navigation, selectedTrip }) => {
         </View>
 
         <AuthButton onPress={handleSubmit}>
-          <AuthButtonText> updat this trip </AuthButtonText>
+          <AuthButtonText> update this trip </AuthButtonText>
         </AuthButton>
       </AuthContainer>
     </>

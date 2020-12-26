@@ -41,19 +41,19 @@ class AuthStore {
     this.user = null;
   };
 
-  checkForToken = async () => {
-    const token = await AsyncStorage.getItem("myToken");
-    if (token) {
-      const decodedToken = decode(token);
-      if (Date.now() < decodedToken.exp) {
-        this.setUser(token);
-      } else {
-        this.signout();
-      }
-    }
-  };
+  // checkForToken = async () => {
+  //   const token = await AsyncStorage.getItem("myToken");
+  //   if (token) {
+  //     const decodedToken = decode(token);
+  //     if (Date.now() < decodedToken.exp) {
+  //       this.setUser(token);
+  //     } else {
+  //       this.signout();
+  //     }
+  //   }
+  // };
 }
 const authStore = new AuthStore();
-authStore.checkForToken();
+// authStore.checkForToken();
 
 export default authStore;
