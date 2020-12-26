@@ -23,6 +23,9 @@ const Signup = ({ navigation }) => {
   const handleSubmit = async () => {
     await authStore.signup(user);
     if (authStore.user) navigation.replace("Profile");
+    else {
+      Alert.alert("The username already exists");
+    }
   };
   return (
     <AuthContainer>
@@ -35,26 +38,31 @@ const Signup = ({ navigation }) => {
       <AuthTextInput
         onChangeText={(username) => setUser({ ...user, username })}
         placeholder="Username"
+        // autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
         onChangeText={(firstName) => setUser({ ...user, firstName })}
         placeholder="FirstName"
+        // autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
         onChangeText={(lastName) => setUser({ ...user, lastName })}
         placeholder="LastName"
+        // autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
         onChangeText={(email) => setUser({ ...user, email })}
         placeholder="Email"
+        // autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
         onChangeText={(password) => setUser({ ...user, password })}
         placeholder="Password"
+        // autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
         secureTextEntry={true}
       />
