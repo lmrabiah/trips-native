@@ -27,7 +27,7 @@ const Home = ({ navigation }) => {
           <Title>Trips</Title>
         </TopStyling>
         <BottomStyling>
-          <ButtonStyled onPress={() => navigation.navigate("Profile")}>
+          <ButtonStyled onPress={() => navigation.navigate("Signin")}>
             Click here to skip
           </ButtonStyled>
           <Button>
