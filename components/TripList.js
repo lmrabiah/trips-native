@@ -4,8 +4,11 @@ import { Button, Content, List, Text } from "native-base";
 import tripStore from "../stores/tripStore";
 import TripItem from "./TripItem";
 import CreatTripModel from "./CreatTripModel";
-const TripList = ({ navigation }) => {
-  const Alltrips = tripStore.trips.map((trip) => (
+
+
+
+const TripList = ({ navigation , trips }) => {
+  const Alltrips = trips.map((trip) => (
     <TripItem navigation={navigation} trip={trip} key={trip.id} />
   ));
   return (
@@ -13,7 +16,7 @@ const TripList = ({ navigation }) => {
       <List>{Alltrips}</List>
       <Button
         onPress={() =>
-          navigation.navigate("CreatTripModel", { navigation: navigation })
+          navigation.navigate("CreatTripModel")
         }
       >
         <Text> Creat new trip</Text>

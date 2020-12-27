@@ -19,11 +19,8 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     <Navigator
- profile
-      initialRouteName="Signup"
-
-      initialRouteName="UpdateTripModel"
-
+      profile
+      initialRouteName="Signin"
       screenOptions={{
         headerTintColor: "white",
 
@@ -74,11 +71,14 @@ const RootNavigator = () => {
         options={{
           headerStyle: {
             backgroundColor: "#ffd1dc",
+            title: "profile list ",
           },
-          title: "profile list ",
-
-          headerRight: () => <ShowTripsButton />,
-          headerLeft: () => <HomeButton />,
+          //   options={({ route }) => {
+          //     const { profile } = route.params;
+          //     return {
+          //       title: trip.title,
+          //   headerRight: () => <ShowTripsButton />,
+          //   headerLeft: () => <HomeButton />,
         }}
       />
       <Screen

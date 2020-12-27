@@ -1,4 +1,4 @@
-import { Button, Image, Platform } from "react-native";
+import { Button, Image, Platform, View } from "react-native";
 import { observer } from "mobx-react";
 import React, { useState, useEffect } from "react";
 
@@ -20,7 +20,7 @@ const EditProfileModel = ({ navigation }) => {
     bio: "",
   });
 
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
 
   useEffect(async () => {
     if (Platform.OS !== "web") {
@@ -81,16 +81,11 @@ const EditProfileModel = ({ navigation }) => {
           autoCapitalize="none"
         />
       </AuthContainer>
-
       <AuthContainer>
-        <Button title="Pick an image from camera roll" onPress={pickImage} />
-        {profile.image && (
-          <Image
-            source={{ uri: profile.image.uri }}
-            style={{ width: 200, height: 200 }}
-          />
-        )}
-
+        <View>
+          <Button title="Pick an image from camera roll" onPress={pickImage}/>
+          {/* {profile.image && (<Image source={{ uri: profile.image.uri }}style={{ width: 200, height: 200 }} />)} */}
+        </View>
         <AuthButton onPress={handleSubmit}>
           <AuthButtonText> Done </AuthButtonText>
         </AuthButton>
@@ -100,3 +95,5 @@ const EditProfileModel = ({ navigation }) => {
 };
 
 export default observer(EditProfileModel);
+
+

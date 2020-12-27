@@ -18,8 +18,7 @@ const EditProflieButton = () => {
     <Container>
       <AuthButton>
         <AuthButtonText onPress={() => navigation.navigate("EditProfile")}>
-          {" "}
-          Edit Profile{" "}
+          Edit Profile
         </AuthButtonText>
       </AuthButton>
     </Container>

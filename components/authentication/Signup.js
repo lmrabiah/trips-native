@@ -22,13 +22,10 @@ const Signup = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.signup(user);
-    if (authStore.user) navigation.replace("Profile");
-
-
+    if (authStore.user) navigation.replace("Profile"), { profile: profile };
     else {
       Alert.alert("The username already exists");
     }
-
   };
 
   return (

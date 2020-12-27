@@ -27,24 +27,21 @@ const Signin = ({ navigation }) => {
       navigation.replace("Profile");
       console.log("helllo");
 
-    console.log("Signin", user);
+      console.log("Signin", user);
 
-    if (authStore.user) navigation.replace("TripList");
-    if (
-      user.check_textInputPassword === false &&
-      user.check_textInputUserName === false
-    ) {
-      Alert.alert("please write your password and username");
-    } else if (user.check_textInputUserName === false) {
-      Alert.alert("please write your username");
-    } else if (user.check_textInputPassword === false) {
-      Alert.alert("please write your password");
+      if (authStore.user) navigation.replace("Profile");
+      if (
+        user.check_textInputPassword === false &&
+        user.check_textInputUserName === false
+      ) {
+        Alert.alert("please write your password and username");
+      } else if (user.check_textInputUserName === false) {
+        Alert.alert("please write your username");
+      } else if (user.check_textInputPassword === false) {
+        Alert.alert("please write your password");
+      }
     }
   };
-  // } else {
-  //   Alert.alert(
-  //     "please make sure you have enterd the correct username and password"
-  //   );
   const textInputChange = (val) => {
     if (val.length !== 0) {
       setUser({
@@ -74,7 +71,6 @@ const Signin = ({ navigation }) => {
         password: val,
         check_textInputPassword: false,
       });
-
     }
   };
 

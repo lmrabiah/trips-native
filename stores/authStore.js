@@ -20,14 +20,12 @@ class AuthStore {
 
   signup = async (userData, profile) => {
     try {
-
       const res = await instance.post("/signup", userData, profile);
       this.setUser(res.data.token);
       profileStore.userProfile = res.data.userProfile;
 
-      const res = await instance.post("/signup", userData);
-      await this.setUser(res.data.token);
-
+      // const res = await instance.post("/signup", userData);
+      // await this.setUser(res.data.token);
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
     }
@@ -38,7 +36,6 @@ class AuthStore {
 
       this.setUser(res.data.token);
       profileStore.userProfile = res.data.userProfile;
-
 
       await this.setUser(res.data.token);
 
@@ -54,19 +51,19 @@ class AuthStore {
     this.user = null;
   };
 
-  // checkForToken = async () => {
-  //   const token = await AsyncStorage.getItem("myToken");
-  //   if (token) {
-  //     const decodedToken = decode(token);
-  //     if (Date.now() < decodedToken.exp) {
-  //       this.setUser(token);
-  //     } else {
-  //       this.signout();
-  //     }
-  //   }
-  // };
+  checkForToken = async () => {
+    const token = await AsyncStorage.getItem("myToken");
+    if (token) {
+      const decodedToken = decode(token);
+      if (Date.now() < decodedToken.exp) {
+        this.setUser(token);
+      } else {
+        this.signout();
+      }
+    }
+  };
 }
 const authStore = new AuthStore();
-// authStore.checkForToken();
+authStore.checkForToken();
 
 export default authStore;
