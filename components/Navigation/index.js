@@ -19,8 +19,20 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     <Navigator
+<<<<<<< HEAD
       profile
       initialRouteName="Signin"
+=======
+
+      initialRouteName="Signin"
+
+ profile
+      initialRouteName="Signup"
+
+      initialRouteName="UpdateTripModel"
+
+
+>>>>>>> acb78c1e56d4364143e007126a60517ca62da9d5
       screenOptions={{
         headerTintColor: "white",
 
@@ -35,7 +47,7 @@ const RootNavigator = () => {
       <Screen
         name="Signup"
         component={Signup}
-        // options={{ headerShown: false }}
+        options={{ headerShown: false }}
         options={{
           headerStyle: {
             backgroundColor: "#ffd1dc",
@@ -48,6 +60,7 @@ const RootNavigator = () => {
       <Screen
         name="Signin"
         component={Signin}
+        options={{ headerShown: false }}
         options={{
           headerStyle: {
             backgroundColor: "#ffd1dc",

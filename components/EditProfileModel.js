@@ -82,10 +82,35 @@ const EditProfileModel = ({ navigation }) => {
         />
       </AuthContainer>
       <AuthContainer>
+<<<<<<< HEAD
         <View>
           <Button title="Pick an image from camera roll" onPress={pickImage}/>
           {/* {profile.image && (<Image source={{ uri: profile.image.uri }}style={{ width: 200, height: 200 }} />)} */}
         </View>
+=======
+
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <Button title="Pick an image from camera roll" onPress={pickImage} />
+          {profile.image && (
+            <Image
+              source={{ uri: profile.image }}
+              style={{ width: 200, height: 200 }}
+            />
+          )}
+        </View>
+
+        <Button title="Pick an image from camera roll" onPress={pickImage} />
+        {profile.image && (
+          <Image
+            source={{ uri: profile.image.uri }}
+            style={{ width: 200, height: 200 }}
+          />
+        )}
+
+
+>>>>>>> acb78c1e56d4364143e007126a60517ca62da9d5
         <AuthButton onPress={handleSubmit}>
           <AuthButtonText> Done </AuthButtonText>
         </AuthButton>

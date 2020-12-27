@@ -4,6 +4,7 @@ import { View, Text } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import TripList from "../TripList";
 import { Alert } from "react-native";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import {
   AuthButton,
   AuthButtonText,
@@ -29,6 +30,7 @@ const Signin = ({ navigation }) => {
 
       console.log("Signin", user);
 
+<<<<<<< HEAD
       if (authStore.user) navigation.replace("Profile");
       if (
         user.check_textInputPassword === false &&
@@ -40,6 +42,19 @@ const Signin = ({ navigation }) => {
       } else if (user.check_textInputPassword === false) {
         Alert.alert("please write your password");
       }
+=======
+    if (authStore.user) navigation.replace("Profile");
+    // if (
+    //   user.check_textInputPassword === false &&
+    //   user.check_textInputUserName === false
+    // )
+    if (user.username.length == 0 || user.password.length == 0) {
+      Alert.alert("please write your password and username");
+    } else if (user.check_textInputUserName === false) {
+      Alert.alert("please write your username");
+    } else if (user.check_textInputPassword === false) {
+      Alert.alert("please write your password");
+>>>>>>> acb78c1e56d4364143e007126a60517ca62da9d5
     }
   };
   const textInputChange = (val) => {
@@ -76,6 +91,7 @@ const Signin = ({ navigation }) => {
 
   return (
     <AuthContainer>
+      <FontAwesome name="user-o" size />
       <AuthButton onPress={handleSubmit}>
         <AuthButtonText>Sign in</AuthButtonText>
       </AuthButton>
