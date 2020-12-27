@@ -1,6 +1,7 @@
-import { View, Text, Button, Image } from "react-native";
+import { Button, Image, Platform } from "react-native";
 import { observer } from "mobx-react";
 import React, { useState, useEffect } from "react";
+
 import profileStore from "../stores/profileStore";
 import {
   AuthContainer,
@@ -8,6 +9,7 @@ import {
   AuthButtonText,
   AuthTextInput,
 } from "../styles";
+
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 
@@ -18,23 +20,17 @@ const EditProfileModel = ({ navigation }) => {
     bio: "",
   });
 
-  const handleSubmit = async () => {
-    await profileStore.updateProfile(profiles);
-    if (profileStore.profiles) navigation.navigate("Profile");
-  };
-
   const [image, setImage] = useState(null);
-  useEffect(() => {
-    (async () => {
-      if (Platform.OS !== "web") {
-        const {
-          status,
-        } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== "granted") {
-          alert("Sorry, we need camera roll permissions to make this work!");
-        }
+
+  useEffect(async () => {
+    if (Platform.OS !== "web") {
+      const {
+        status,
+      } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== "granted") {
+        alert("Sorry, we need camera roll permissions to make this work!");
       }
-    })();
+    }
   }, []);
 
   const pickImage = async () => {
@@ -46,7 +42,26 @@ const EditProfileModel = ({ navigation }) => {
     });
 
     if (!result.cancelled) {
-      setImage(result.uri);
+      // ImagePicker saves the taken photo to disk and returns a local URI to it
+      let localUri = result.uri;
+      let filename = localUri.split("/").pop();
+
+      // Infer the type of the image
+      let match = /\.(\w+)$/.exec(filename);
+      let type = match ? `image/${match[1]}` : `image`;
+
+      setProfile({
+        ...profile,
+        image: { uri: localUri, name: filename, type },
+      });
+    }
+  };
+
+  const handleSubmit = async () => {
+    await profileStore.updateProfile(profile);
+    if (profileStore.profile) {
+      navigation.replace("Profile");
+      console.log("updateProfile");
     }
   };
 
@@ -68,17 +83,13 @@ const EditProfileModel = ({ navigation }) => {
       </AuthContainer>
 
       <AuthContainer>
-        <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          <Button title="Pick an image from camera roll" onPress={pickImage} />
-          {image && (
-            <Image
-              source={{ uri: image }}
-              style={{ width: 200, height: 200 }}
-            />
-          )}
-        </View>
+        <Button title="Pick an image from camera roll" onPress={pickImage} />
+        {profile.image && (
+          <Image
+            source={{ uri: profile.image.uri }}
+            style={{ width: 200, height: 200 }}
+          />
+        )}
 
         <AuthButton onPress={handleSubmit}>
           <AuthButtonText> Done </AuthButtonText>

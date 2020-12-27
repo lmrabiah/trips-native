@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+  TextInput,
+  StyleSheet,
+} from "react-native";
 import { Container, Header, Content, Button } from "native-base";
 import { AuthButton, AuthButtonText } from "../../styles";
 import { observer } from "mobx-react";
