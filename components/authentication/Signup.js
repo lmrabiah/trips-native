@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import {
   AuthButton,
@@ -15,18 +15,80 @@ import authStore from "../../stores/authStore";
 const Signup = ({ navigation }) => {
   const [user, setUser] = useState({
     username: "",
-    firstName: "",
-    lastName: "",
-    email: "",
+    // firstName: "",
+    // lastName: "",
+    // email: "",
     password: "",
+    check_textInputUserName: false,
+    check_textInputPassword: false,
   });
   const handleSubmit = async () => {
     await authStore.signup(user);
     if (authStore.user) navigation.replace("Profile");
 
+    // else {
+    //   Alert.alert("The username already exists");
+
+    if (user.username.length == 0 || user.password.length == 0) {
+      Alert.alert(
+        "Wrong Input!",
+        "Username or password field cannot be empty."
+      );
+
+      if (
+        user.check_textInputPassword === false &&
+        user.check_textInputUserName === false
+      ) {
+        Alert.alert("please write your password and username");
+        // } else if (user.check_textInputUserName === false) {
+        //   Alert.alert("please write your username");
+        // } else if (user.check_textInputPassword === false) {
+        //   Alert.alert("please write your password");
+      }
+
+      // } else {
+      //   Alert.alert(
+      //     "please make sure you have enterd the correct username and password"
+      //   );
+    }
+  };
+
+  const textInputChange = (val) => {
+    if (val.length !== 0) {
+      setUser({
+        ...user,
+        username: val,
+        check_textInputUserName: true,
+      });
+    } else {
+      setUser({
+        ...user,
+        username: val,
+        check_textInputUserName: false,
+      });
+    }
+  };
+
+  const textInputChangepassword = (val) => {
+    if (val.length !== 0) {
+      setUser({
+        ...user,
+        password: val,
+        check_textInputPassword: true,
+      });
+    } else {
+      setUser({
+        ...user,
+        password: val,
+        check_textInputPassword: false,
+      });
+
+      
+
 
     else {
       Alert.alert("The username already exists");
+
     }
 
   };
@@ -40,7 +102,7 @@ const Signup = ({ navigation }) => {
         Click here to login!
       </AuthOther>
       <AuthTextInput
-        onChangeText={(username) => setUser({ ...user, username })}
+        onChangeText={(val) => textInputChange(val)}
         placeholder="Username"
         // autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
@@ -64,7 +126,7 @@ const Signup = ({ navigation }) => {
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
-        onChangeText={(password) => setUser({ ...user, password })}
+        onChangeText={(val) => textInputChangepassword(val)}
         placeholder="Password"
         // autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
