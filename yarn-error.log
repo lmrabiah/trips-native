@@ -1,5 +1,9 @@
 Arguments: 
+
   /usr/local/Cellar/node/14.14.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add expo-linear-gradient
+
+  /usr/local/Cellar/node/14.14.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add @react-native-firebase/storge
+
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
@@ -14,8 +18,13 @@ Platform:
   darwin x64
 
 Trace: 
+
   Error: https://registry.yarnpkg.com/react-native-community%2freact-native-linear-gradient: Request "https://registry.yarnpkg.com/react-native-community%2freact-native-linear-gradient" returned a 405
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:66997:18)
+
+  Error: https://registry.yarnpkg.com/@react-native-firebase%2fstorge: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:66988:18)
+
       at Request.self.callback (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:140749:22)
       at Request.emit (events.js:315:20)
       at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141721:10)
@@ -45,6 +54,9 @@ npm manifest:
       "AsyncStorage": "^0.1.5",
       "axios": "^0.21.1",
       "expo": "~40.0.0",
+
+      "expo-constants": "~9.3.3",
+
       "expo-image-picker": "~9.2.0",
       "expo-status-bar": "~1.0.3",
       "jwt-decode": "^3.1.2",
@@ -55,6 +67,7 @@ npm manifest:
       "react": "16.13.1",
       "react-devtools": "^4.10.1",
       "react-dom": "16.13.1",
+
       "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
       "react-native-animatable": "^1.3.3",
       "react-native-gesture-handler": "^1.9.0",
@@ -62,6 +75,14 @@ npm manifest:
       "react-native-community/react-native-linear-gradient": "^2.5.6",
       "react-native-paper": "^4.5.0",
       "react-native-reanimated": "^1.13.2",
+
+      "react-native": "^0.63.4",
+      "react-native-gesture-handler": "~1.8.0",
+      "react-native-image-crop-picker": "^0.35.2",
+      "react-native-image-picker": "^3.1.2",
+      "react-native-paper": "^4.5.0",
+      "react-native-reanimated": "~1.13.0",
+
       "react-native-safe-area-context": "3.1.9",
       "react-native-screens": "~2.15.0",
       "react-native-vector-icons": "^7.1.0",
@@ -1395,7 +1416,11 @@ Lockfile:
       hermes-profile-transformer "^0.0.6"
       ip "^1.1.5"
   
+
   "@react-native-community/cli-platform-android@^4.13.0", "@react-native-community/cli-platform-android@^4.7.0":
+
+  "@react-native-community/cli-platform-android@^4.10.0", "@react-native-community/cli-platform-android@^4.13.0":
+
     version "4.13.0"
     resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-4.13.0.tgz#922681ec82ee1aadd993598b814df1152118be02"
     integrity sha512-3i8sX8GklEytUZwPnojuoFbCjIRzMugCdzDIdZ9UNmi/OhD4/8mLGO0dgXfT4sMWjZwu3qjy45sFfk2zOAgHbA==
@@ -1411,7 +1436,11 @@ Lockfile:
       slash "^3.0.0"
       xmldoc "^1.1.2"
   
+
   "@react-native-community/cli-platform-ios@^4.7.0":
+
+  "@react-native-community/cli-platform-ios@^4.10.0":
+
     version "4.13.0"
     resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-ios/-/cli-platform-ios-4.13.0.tgz#a738915c68cac86df54e578b59a1311ea62b1aef"
     integrity sha512-6THlTu8zp62efkzimfGr3VIuQJ2514o+vScZERJCV1xgEi8XtV7mb/ZKt9o6Y9WGxKKkc0E0b/aVAtgy+L27CA==
@@ -1456,7 +1485,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@react-native-community/cli-types/-/cli-types-4.10.1.tgz#d68a2dcd1649d3b3774823c64e5e9ce55bfbe1c9"
     integrity sha512-ael2f1onoPF3vF7YqHGWy7NnafzGu+yp88BbFbP0ydoCP2xGSUzmZVw0zakPTC040Id+JQ9WeFczujMkDy6jYQ==
   
+
   "@react-native-community/cli@^4.7.0":
+
+  "@react-native-community/cli@^4.10.0":
+
     version "4.13.1"
     resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-4.13.1.tgz#60148723e77cafe3ae260317d6bffe91853a2d20"
     integrity sha512-+/TeRVToADpQPSprsPkwi9KY8x64YcuJpjzMBVISwWP+aWzsIDuWJmyMXTADlCg2EBMJqJR7bn1W/IkfzVRCWA==
@@ -2554,6 +2587,7 @@ Lockfile:
       loose-envify "^1.3.1"
       object-assign "^4.1.1"
   
+
   cross-fetch@^3.0.4:
     version "3.0.6"
     resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.6.tgz#3a4040bc8941e653e0e9cf17f29ebcd177d3365c"
@@ -2561,6 +2595,8 @@ Lockfile:
     dependencies:
       node-fetch "2.6.1"
   
+
+
   cross-spawn@^5.0.1, cross-spawn@^5.1.0:
     version "5.1.0"
     resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -3188,6 +3224,7 @@ Lockfile:
       setimmediate "^1.0.5"
       ua-parser-js "^0.7.18"
   
+
   fbjs@^3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-3.0.0.tgz#0907067fb3f57a78f45d95f1eacffcacd623c165"
@@ -3201,6 +3238,7 @@ Lockfile:
       setimmediate "^1.0.5"
       ua-parser-js "^0.7.18"
   
+
   fd-slicer@~1.1.0:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/fd-slicer/-/fd-slicer-1.1.0.tgz#25c7c89cb1f9077f8891bbe61d8f390eae256f1e"
@@ -4913,11 +4951,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/nocache/-/nocache-2.1.0.tgz#120c9ffec43b5729b1d5de88cd71aa75a0ba491f"
     integrity sha512-0L9FvHG3nfnnmaEQPjT9xhfN4ISk0A8/2j4M37Np4mcDesJjHgEUfgPhdCyZuFI954tjokaIj/A3NdpFNdEh4Q==
   
+
   node-fetch@2.6.1, node-fetch@^2.2.0, node-fetch@^2.6.0:
     version "2.6.1"
     resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
     integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
   
+
   node-fetch@^1.0.1:
     version "1.7.3"
     resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
@@ -4925,7 +4965,13 @@ Lockfile:
     dependencies:
       encoding "^0.1.11"
       is-stream "^1.0.1"
+
+  node-fetch@^2.2.0, node-fetch@^2.6.0:
+    version "2.6.1"
+    resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+    integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
   
+
   node-int64@^0.4.0:
     version "0.4.0"
     resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
@@ -5501,6 +5547,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
     integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
   
+
   react-native-animatable@^1.3.3:
     version "1.3.3"
     resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.3.3.tgz#a13a4af8258e3bb14d0a9d839917e9bb9274ec8a"
@@ -5508,6 +5555,7 @@ Lockfile:
     dependencies:
       prop-types "^15.7.2"
   
+
   react-native-drawer@2.5.1:
     version "2.5.1"
     resolved "https://registry.yarnpkg.com/react-native-drawer/-/react-native-drawer-2.5.1.tgz#08b9314184f48c724f1b467f8859797369798654"
@@ -5523,6 +5571,7 @@ Lockfile:
     dependencies:
       lodash "^4.17.15"
   
+
   react-native-gesture-handler@^1.9.0:
     version "1.9.0"
     resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.9.0.tgz#e441b1c0277c3fd4ca3e5c58fdd681e2f0ceddf0"
@@ -5530,10 +5579,25 @@ Lockfile:
     dependencies:
       "@egjs/hammerjs" "^2.0.17"
       fbjs "^3.0.0"
+
+  react-native-gesture-handler@~1.8.0:
+    version "1.8.0"
+    resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.8.0.tgz#18f61f51da50320f938957b0ee79bc58f47449dc"
+    integrity sha512-E2FZa0qZ5Bi0Z8Jg4n9DaFomHvedSjwbO2DPmUUHYRy1lH2yxXUpSrqJd6yymu+Efzmjg2+JZzsjFYA2Iq8VEQ==
+    dependencies:
+      "@egjs/hammerjs" "^2.0.17"
+
       hoist-non-react-statics "^3.3.0"
       invariant "^2.2.4"
       prop-types "^15.7.2"
   
+
+  react-native-image-crop-picker@^0.35.2:
+    version "0.35.2"
+    resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.35.2.tgz#21e085e40cb5724e1e986b8eba59ef23df19598c"
+    integrity sha512-4nHAYwnemFJLzVJPl5dhNB+WQgNp41MLJjyYCypatMZl2GJD+EVXnu5eSUQE+UOpaIEhSVtqK5Y3OQ93hMhosQ==
+  
+
   react-native-image-picker@^3.1.2:
     version "3.1.2"
     resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-3.1.2.tgz#f8dda5f8005aa033fd45d77ccbd04d509e783e0c"
@@ -5543,12 +5607,13 @@ Lockfile:
     version "1.3.1"
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
     integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
-  
+
   react-native-linear-gradient@^2.5.6:
     version "2.5.6"
     resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
     integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
   
+
   react-native-paper@^4.5.0:
     version "4.5.0"
     resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.5.0.tgz#5f1f1e658dbd7a322a299e08ce76e22be44c01d5"
@@ -5558,7 +5623,11 @@ Lockfile:
       color "^3.1.2"
       react-native-iphone-x-helper "^1.3.1"
   
+
   react-native-reanimated@^1.13.2:
+
+  react-native-reanimated@~1.13.0:
+
     version "1.13.2"
     resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.2.tgz#1ae5457b24b4913d173a5a064bb28eae7783d293"
     integrity sha512-O+WhgxSjOIzcVdAAvx+h2DY331Ek1knKlaq+jsNLpC1fhRy9XTdOObovgob/aF2ve9uJfPEawCx8381g/tUJZQ==
@@ -5604,6 +5673,7 @@ Lockfile:
       prop-types "^15.6.0"
       react-timer-mixin "^0.13.4"
   
+
   "react-native@https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz":
     version "0.63.2"
     resolved "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz#5a545ad0b464824817ad699bb104d031d6ff6c39"
@@ -5612,6 +5682,17 @@ Lockfile:
       "@react-native-community/cli" "^4.7.0"
       "@react-native-community/cli-platform-android" "^4.7.0"
       "@react-native-community/cli-platform-ios" "^4.7.0"
+
+  react-native@^0.63.4:
+    version "0.63.4"
+    resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.4.tgz#2210fdd404c94a5fa6b423c6de86f8e48810ec36"
+    integrity sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw==
+    dependencies:
+      "@babel/runtime" "^7.0.0"
+      "@react-native-community/cli" "^4.10.0"
+      "@react-native-community/cli-platform-android" "^4.10.0"
+      "@react-native-community/cli-platform-ios" "^4.10.0"
+
       abort-controller "^3.0.0"
       anser "^1.4.9"
       base64-js "^1.1.2"

@@ -25,6 +25,7 @@ const Signup = ({ navigation }) => {
   const handleSubmit = async () => {
     await authStore.signup(user);
     if (authStore.user) navigation.replace("Profile");
+
     // else {
     //   Alert.alert("The username already exists");
 
@@ -81,7 +82,15 @@ const Signup = ({ navigation }) => {
         password: val,
         check_textInputPassword: false,
       });
+
+      
+
+
+    else {
+      Alert.alert("The username already exists");
+
     }
+
   };
 
   return (

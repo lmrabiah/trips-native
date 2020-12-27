@@ -23,6 +23,11 @@ const Signin = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.signin(user);
+
+    if (authStore.user) {
+      navigation.replace("Profile");
+      console.log("helllo");
+
     console.log("Signin", user);
 
     if (authStore.user) navigation.replace("Profile");
@@ -71,6 +76,7 @@ const Signin = ({ navigation }) => {
         password: val,
         check_textInputPassword: false,
       });
+
     }
   };
 
