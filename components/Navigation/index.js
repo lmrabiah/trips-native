@@ -14,15 +14,15 @@ import authStore from "../../stores/authStore";
 import CreatTripModel from "../CreatTripModel";
 import HomeButton from "../Buttons/HomeButton";
 import UpdateTripModel from "../UpdateTripModel";
+import ProfileGuest from "../ProfileGuest";
 
 const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     <Navigator
-      initialRouteName="Signin"
+      initialRouteName="Signup"
       screenOptions={{
         headerTintColor: "white",
-
         headerStyle: {
           backgroundColor: "black",
         },
@@ -37,7 +37,7 @@ const RootNavigator = () => {
         options={{ headerShown: false }}
         options={{
           headerStyle: {
-            backgroundColor: "#ffd1dc",
+            backgroundColor: "orange",
           },
           title: "Signup",
           headerRight: () => <ShowTripsButton />,
@@ -50,7 +50,7 @@ const RootNavigator = () => {
         options={{ headerShown: false }}
         options={{
           headerStyle: {
-            backgroundColor: "#ffd1dc",
+            backgroundColor: "orange",
           },
           title: "Signin",
           headerRight: () => <ShowTripsButton />,
@@ -70,15 +70,9 @@ const RootNavigator = () => {
         component={ProfileList}
         options={{
           headerStyle: {
-            backgroundColor: "#ffd1dc",
+            backgroundColor: "orange",
             title: "profile list ",
           },
-          //   options={({ route }) => {
-          //     const { profile } = route.params;
-          //     return {
-          //       title: trip.title,
-          //   headerRight: () => <ShowTripsButton />,
-          //   headerLeft: () => <HomeButton />,
         }}
       />
       <Screen
@@ -86,7 +80,7 @@ const RootNavigator = () => {
         component={EditProfileModel}
         options={{
           headerStyle: {
-            backgroundColor: "#ffd1dc",
+            backgroundColor: "orange",
           },
           title: "Edit ProfileModel ",
           headerRight: () => <ShowTripsButton />,
@@ -98,7 +92,7 @@ const RootNavigator = () => {
         component={TripList}
         options={{
           headerStyle: {
-            backgroundColor: "#ffd1dc",
+            backgroundColor: "orange",
           },
           title: "Trips",
           headerRight: () => <ShowTripsButton />,
@@ -123,7 +117,7 @@ const RootNavigator = () => {
         component={CreatTripModel}
         options={{
           headerStyle: {
-            backgroundColor: "#ffd1dc",
+            backgroundColor: "orange",
           },
           title: "Trips",
           headerRight: () => <ShowTripsButton />,
@@ -134,12 +128,13 @@ const RootNavigator = () => {
         component={UpdateTripModel}
         options={{
           headerStyle: {
-            backgroundColor: "#ffd1dc",
+            backgroundColor: "orange",
           },
           title: "Trips",
           headerRight: () => <ShowTripsButton />,
         }}
       />
+      <Screen name="Guest" component={ProfileGuest} />
     </Navigator>
   );
 };

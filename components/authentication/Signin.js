@@ -21,18 +21,22 @@ const Signin = ({ navigation }) => {
     check_textInputUserName: false,
     check_textInputPassword: false,
   });
+
   const handleSubmit = async () => {
-    await authStore.signin(user);
-
-    if (authStore.user) {
-      navigation.replace("Profile");
-      console.log("helllo");
-
-      console.log("Signin", user);
-
-
- 
+    if (user.username.length == 0 || user.password.length == 0) {
+      Alert.alert(
+        "Wrong Input!",
+        "Username or password field cannot be empty."
+      );
+    } else {
+      if (authStore.user) {
+        await authStore.signin(user);
+        navigation.replace("Profile");
+        console.log("helllo");
+      }
+    }
   };
+
   const textInputChange = (val) => {
     if (val.length !== 0) {
       setUser({
@@ -90,4 +94,5 @@ const Signin = ({ navigation }) => {
     </AuthContainer>
   );
 };
+
 export default observer(Signin);

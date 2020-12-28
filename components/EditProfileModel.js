@@ -93,6 +93,13 @@ const EditProfileModel = ({ navigation }) => {
             />
           )}
         </View>
+        <Button title="Pick an image from camera roll" onPress={pickImage} />
+        {profile.image && (
+          <Image
+            source={{ uri: profile.image.uri }}
+            style={{ width: 200, height: 200 }}
+          />
+        )}
 
         <AuthButton onPress={handleSubmit}>
           <AuthButtonText> Done </AuthButtonText>

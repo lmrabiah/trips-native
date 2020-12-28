@@ -5,22 +5,13 @@ import tripStore from "../stores/tripStore";
 import TripItem from "./TripItem";
 import CreatTripModel from "./CreatTripModel";
 
-
-
-const TripList = ({ navigation , trips }) => {
+const TripList = ({ navigation, trips }) => {
   const Alltrips = trips.map((trip) => (
     <TripItem navigation={navigation} trip={trip} key={trip.id} />
   ));
   return (
     <Content>
       <List>{Alltrips}</List>
-      <Button
-        onPress={() =>
-          navigation.navigate("CreatTripModel")
-        }
-      >
-        <Text> Creat new trip</Text>
-      </Button>
     </Content>
   );
 };
