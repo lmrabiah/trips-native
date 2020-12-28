@@ -82,6 +82,7 @@ const EditProfileModel = ({ navigation }) => {
         />
       </AuthContainer>
       <AuthContainer>
+
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >

@@ -12,6 +12,7 @@ const TripList = ({ navigation, trips }) => {
   return (
     <Content>
       <List>{Alltrips}</List>
+
     </Content>
   );
 };
