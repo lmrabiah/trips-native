@@ -12,9 +12,7 @@ const TripList = ({ navigation, trips }) => {
   return (
     <Content>
       <List>{Alltrips}</List>
-      <Button onPress={() => navigation.navigate("CreatTripModel")}>
-        <Text> Creat new trip</Text>
-      </Button>
+
     </Content>
   );
 };

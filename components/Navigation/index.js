@@ -21,7 +21,9 @@ const RootNavigator = () => {
   return (
     <Navigator
 
+
       initialRouteName="Signup"
+
 
       screenOptions={{
         headerTintColor: "white",
