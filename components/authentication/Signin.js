@@ -30,11 +30,12 @@ const Signin = ({ navigation }) => {
       );
     } else {
       await authStore.signin(user);
-      navigation.replace("TripList");
-      console.log("helllo");
+      console.log(user);
+      if (!authStore.user) {
+        Alert.alert("Wrong Input!", "Username or password .");
+      } else if (authStore.user) navigation.replace("Home");
     }
   };
-
   const textInputChange = (val) => {
     if (val.length !== 0) {
       setUser({

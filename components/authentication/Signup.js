@@ -21,25 +21,26 @@ const Signup = ({ navigation }) => {
     password: "",
     check_textInputUserName: false,
     check_textInputPassword: false,
-    textInputChangefirstName: false,
+    check_textInputfirstName: false,
+    check_textInputlastName: false,
+    check_textInputEmail: false,
   });
   const handleSubmit = async () => {
-
     // else {
     //   Alert.alert("The username already exists");
 
-    if (
-      user.username.length == 0 ||
-      user.password.length == 0 ||
-      user.firstname.length == 0 ||
-      user.lastname.length == 0 ||
-      user.email.length == 0
-    ) {
+    if (user.username.length == 0 || user.firstName.length == 0) {
+      {
+        Alert.alert("Wrong Input!", "please fill all the field.");
+      }
+    } else if (user.lastName.length == 0 || user.password.length == 0) {
+      Alert.alert("Wrong Input!", "please fill all the field.");
+    } else if (user.email.length == 0 || user.password.length == 0) {
       Alert.alert("Wrong Input!", "please fill all the field.");
     } else {
       await authStore.signup(user);
 
-      if (authStore.user) navigation.replace("Profile");
+      if (authStore.user) navigation.replace("Home");
     }
   };
 
@@ -72,7 +73,6 @@ const Signup = ({ navigation }) => {
         password: val,
         check_textInputPassword: false,
       });
-
     }
   };
 
@@ -81,21 +81,46 @@ const Signup = ({ navigation }) => {
       setUser({
         ...user,
         firstName: val,
-        check_textInputifirstName: true,
+        check_textInputfirstName: true,
       });
     } else {
       setUser({
         ...user,
         firstName: val,
-        check_textInputifirstName: false,
+        check_textInputfirstName: false,
       });
-
-    // else {
-    //   Alert.alert("The username already exists");
-
     }
   };
-
+  const textInputChangelastName = (val) => {
+    if (val.length !== 0) {
+      setUser({
+        ...user,
+        lastName: val,
+        check_textInputlastName: true,
+      });
+    } else {
+      setUser({
+        ...user,
+        lastName: val,
+        check_textInputlastName: false,
+      });
+    }
+  };
+  const textInputChangeEmail = (val) => {
+    if (val.length !== 0) {
+      setUser({
+        ...user,
+        email: val,
+        check_textInputEmail: true,
+      });
+    } else {
+      setUser({
+        ...user,
+        email: val,
+        check_textInputEmail: false,
+      });
+    }
+  };
   return (
     <AuthContainer>
       <AuthButton onPress={handleSubmit}>
@@ -107,31 +132,31 @@ const Signup = ({ navigation }) => {
       <AuthTextInput
         onChangeText={(val) => textInputChange(val)}
         placeholder="Username"
-        // autoCapitalize="none"
+        autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
         onChangeText={(val) => textInputChangefirstName(val)}
         placeholder="FirstName"
-        // autoCapitalize="none"
+        autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
-        onChangeText={(lastName) => setUser({ ...user, lastName })}
+        onChangeText={(val) => textInputChangelastName(val)}
         placeholder="LastName"
-        // autoCapitalize="none"
+        autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
-        onChangeText={(email) => setUser({ ...user, email })}
+        onChangeText={(val) => textInputChangeEmail(val)}
         placeholder="Email"
-        // autoCapitalize="none"
+        autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
         onChangeText={(val) => textInputChangepassword(val)}
         placeholder="Password"
-        // autoCapitalize="none"
+        autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
         secureTextEntry={true}
       />
