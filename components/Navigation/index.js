@@ -15,24 +15,14 @@ import CreatTripModel from "../CreatTripModel";
 import HomeButton from "../Buttons/HomeButton";
 import UpdateTripModel from "../UpdateTripModel";
 
+// remove all commented code everywhere that you won't use
+
 const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     <Navigator
-<<<<<<< HEAD
       profile
       initialRouteName="Signin"
-=======
-
-      initialRouteName="Signin"
-
- profile
-      initialRouteName="Signup"
-
-      initialRouteName="UpdateTripModel"
-
-
->>>>>>> acb78c1e56d4364143e007126a60517ca62da9d5
       screenOptions={{
         headerTintColor: "white",
 

@@ -38,6 +38,7 @@ class ProfileStore {
     this.profiles.find((profile) => profile.id === profileId);
 }
 
+// remove this method.
 createProfile = async (newProfile) => {
   try {
     const formData = new FormData();
