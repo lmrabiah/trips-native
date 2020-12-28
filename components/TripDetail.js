@@ -46,9 +46,7 @@ function TripDetail({ route, navigation }) {
       </Right>
 
       <Left>
-        <Text>
-          {trip.title} {"\n"}
-        </Text>
+        <Text>{trip.title}</Text>
 
         <Text>{trip.decription}</Text>
         <Button onPress={handlePress}>

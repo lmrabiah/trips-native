@@ -12,6 +12,8 @@ import {
 import Home from "../Home";
 import authStore from "../../stores/authStore";
 
+// clean up this component
+
 const Signup = ({ navigation }) => {
   const [user, setUser] = useState({
     username: "",
@@ -24,9 +26,6 @@ const Signup = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.signup(user);
-<<<<<<< HEAD
-    if (authStore.user) navigation.replace("Profile"), { profile: profile };
-=======
     if (authStore.user) navigation.replace("Profile");
 
     // else {
@@ -55,46 +54,43 @@ const Signup = ({ navigation }) => {
       //   );
     }
   };
+};
 
-  const textInputChange = (val) => {
-    if (val.length !== 0) {
-      setUser({
-        ...user,
-        username: val,
-        check_textInputUserName: true,
-      });
-    } else {
-      setUser({
-        ...user,
-        username: val,
-        check_textInputUserName: false,
-      });
-    }
-  };
+const textInputChange = (val) => {
+  if (val.length !== 0) {
+    setUser({
+      ...user,
+      username: val,
+      check_textInputUserName: true,
+    });
+  } else {
+    setUser({
+      ...user,
+      username: val,
+      check_textInputUserName: false,
+    });
+  }
+};
 
-  const textInputChangepassword = (val) => {
-    if (val.length !== 0) {
-      setUser({
-        ...user,
-        password: val,
-        check_textInputPassword: true,
-      });
-    } else {
-      setUser({
-        ...user,
-        password: val,
-        check_textInputPassword: false,
-      });
+const textInputChangepassword = (val) => {
+  if (val.length !== 0) {
+    setUser({
+      ...user,
+      password: val,
+      check_textInputPassword: true,
+    });
+  } else {
+    setUser({
+      ...user,
+      password: val,
+      check_textInputPassword: false,
+    });
 
-      
+    // else {
+    //   Alert.alert("The username already exists");
 
-
->>>>>>> acb78c1e56d4364143e007126a60517ca62da9d5
-    else {
-      Alert.alert("The username already exists");
-
-    }
-  };
+    // }
+  }
 
   return (
     <AuthContainer>

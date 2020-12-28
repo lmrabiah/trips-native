@@ -13,6 +13,8 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 
+// clean up this component
+
 const EditProfileModel = ({ navigation }) => {
   const [profile, setProfile] = useState({
     name: "",
@@ -82,13 +84,6 @@ const EditProfileModel = ({ navigation }) => {
         />
       </AuthContainer>
       <AuthContainer>
-<<<<<<< HEAD
-        <View>
-          <Button title="Pick an image from camera roll" onPress={pickImage}/>
-          {/* {profile.image && (<Image source={{ uri: profile.image.uri }}style={{ width: 200, height: 200 }} />)} */}
-        </View>
-=======
-
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
@@ -109,8 +104,6 @@ const EditProfileModel = ({ navigation }) => {
           />
         )}
 
-
->>>>>>> acb78c1e56d4364143e007126a60517ca62da9d5
         <AuthButton onPress={handleSubmit}>
           <AuthButtonText> Done </AuthButtonText>
         </AuthButton>
@@ -120,5 +113,3 @@ const EditProfileModel = ({ navigation }) => {
 };
 
 export default observer(EditProfileModel);
-
-

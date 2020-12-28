@@ -32,6 +32,7 @@ const Home = ({ navigation }) => {
           </ButtonStyled>
           <Button>
             <Icon
+              // You have two onPress's here
               onPress={authStore.signout}
               onPress={() => navigation.replace("Signin")}
               type="MaterialCommunityIcons"

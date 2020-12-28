@@ -11,7 +11,7 @@ class AuthStore {
   }
   setUser = async (token) => {
     try {
-      console.log(this.user);
+      console.log(this.user); // remove all console logs before merging to main.
       await AsyncStorage.setItem("myToken", token);
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       this.user = decode(token);
