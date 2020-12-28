@@ -12,6 +12,9 @@ const TripItem = ({ trip, navigation }) => {
           source={{ uri: trip.image }}
         />
       </Right>
+      <Text onPress={() => navigation.navigate("Guest")}>
+        {trip.user.username}
+      </Text>
       <Text>{trip.title}</Text>
       <Left>
         <Text>{trip.description}</Text>
