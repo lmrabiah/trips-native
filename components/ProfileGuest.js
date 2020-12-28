@@ -1,30 +1,10 @@
 import React from "react";
-import { View, SafeAreaView, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import profileStore from "../stores/profileStore";
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
-import TripList from "./TripList";
 
-import { observer } from "mobx-react";
-import {
-  Avatar,
-  Title,
-  Caption,
-  Text,
-  TouchableRipple,
-} from "react-native-paper";
-
-import EditProflieButton from "./Buttons/EditProflieButton";
-
-const ProfileList = ({ navigation }) => {
-  const tripsUser = tripStore.trips.filter(
-    (trip) => trip.userId === authStore.user.id
-  );
-  console.log(tripsUser);
-
-  const listTrips = tripsUser;
-  console.log(listTrips.lenght);
-
+const ProfileGuest = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userInfoSection}>
@@ -46,7 +26,6 @@ const ProfileList = ({ navigation }) => {
           <Text> {listTrips.length} </Text>
         </View>
       </View>
-      <EditProflieButton />
       <View style={styles.container}>
         <TripList trips={tripsUser} navigation={navigation} />
       </View>
@@ -54,7 +33,7 @@ const ProfileList = ({ navigation }) => {
   );
 };
 
-export default observer(ProfileList);
+export default ProfileGuest;
 
 const styles = StyleSheet.create({
   container: {

@@ -24,6 +24,7 @@ const Signup = ({ navigation }) => {
     textInputChangefirstName: false,
   });
   const handleSubmit = async () => {
+
     // else {
     //   Alert.alert("The username already exists");
 
@@ -71,6 +72,7 @@ const Signup = ({ navigation }) => {
         password: val,
         check_textInputPassword: false,
       });
+
     }
   };
 
@@ -87,6 +89,10 @@ const Signup = ({ navigation }) => {
         firstName: val,
         check_textInputifirstName: false,
       });
+
+    // else {
+    //   Alert.alert("The username already exists");
+
     }
   };
 

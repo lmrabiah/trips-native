@@ -82,6 +82,7 @@ const EditProfileModel = ({ navigation }) => {
         />
       </AuthContainer>
       <AuthContainer>
+
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
@@ -93,7 +94,6 @@ const EditProfileModel = ({ navigation }) => {
             />
           )}
         </View>
-
         <Button title="Pick an image from camera roll" onPress={pickImage} />
         {profile.image && (
           <Image
