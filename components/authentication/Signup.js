@@ -24,9 +24,9 @@ const Signup = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.signup(user);
-<<<<<<< HEAD
+
     if (authStore.user) navigation.replace("Profile"), { profile: profile };
-=======
+
     if (authStore.user) navigation.replace("Profile");
 
     // else {
@@ -85,14 +85,8 @@ const Signup = ({ navigation }) => {
         password: val,
         check_textInputPassword: false,
       });
-
-      
-
-
->>>>>>> acb78c1e56d4364143e007126a60517ca62da9d5
-    else {
-      Alert.alert("The username already exists");
-
+    // else {
+    //   Alert.alert("The username already exists");
     }
   };
 

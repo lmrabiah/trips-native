@@ -15,48 +15,50 @@ import {
 import authStore from "../../stores/authStore";
 
 const Signin = ({ navigation }) => {
+
+
   const [user, setUser] = useState({
     username: "",
     password: "",
     check_textInputUserName: false,
     check_textInputPassword: false,
   });
+
+
   const handleSubmit = async () => {
     await authStore.signin(user);
 
     if (authStore.user) {
       navigation.replace("Profile");
-      console.log("helllo");
-
       console.log("Signin", user);
+    
+      // if (authStore.user) navigation.replace("Profile");
+      // if (
+      //   user.check_textInputPassword === false &&
+      //   user.check_textInputUserName === false
+      // )
+      //   Alert.alert("please write your password and username");
+      //  else if (user.check_textInputUserName === false) {
+      //   Alert.alert("please write your username");
+      // } else if (user.check_textInputPassword === false) {
+      //   Alert.alert("please write your password");
+      // }
 
-<<<<<<< HEAD
-      if (authStore.user) navigation.replace("Profile");
-      if (
-        user.check_textInputPassword === false &&
-        user.check_textInputUserName === false
-      ) {
-        Alert.alert("please write your password and username");
-      } else if (user.check_textInputUserName === false) {
-        Alert.alert("please write your username");
-      } else if (user.check_textInputPassword === false) {
-        Alert.alert("please write your password");
-      }
-=======
     if (authStore.user) navigation.replace("Profile");
-    // if (
-    //   user.check_textInputPassword === false &&
-    //   user.check_textInputUserName === false
-    // )
+    if (
+      user.check_textInputPassword === false &&
+      user.check_textInputUserName === false
+    )
     if (user.username.length == 0 || user.password.length == 0) {
       Alert.alert("please write your password and username");
     } else if (user.check_textInputUserName === false) {
       Alert.alert("please write your username");
     } else if (user.check_textInputPassword === false) {
       Alert.alert("please write your password");
->>>>>>> acb78c1e56d4364143e007126a60517ca62da9d5
+    }
     }
   };
+
   const textInputChange = (val) => {
     if (val.length !== 0) {
       setUser({
@@ -71,7 +73,7 @@ const Signin = ({ navigation }) => {
         check_textInputUserName: false,
       });
     }
-  };
+  }
 
   const textInputChangepassword = (val) => {
     if (val.length !== 0) {
@@ -114,4 +116,6 @@ const Signin = ({ navigation }) => {
     </AuthContainer>
   );
 };
+  
+
 export default observer(Signin);
