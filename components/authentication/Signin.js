@@ -33,7 +33,7 @@ const Signin = ({ navigation }) => {
       console.log(user);
       if (!authStore.user) {
         Alert.alert("Wrong Input!", "Username or password .");
-      } else if (authStore.user) navigation.replace("Home");
+      } else if (authStore.user) navigation.replace("Explore");
     }
   };
   const textInputChange = (val) => {

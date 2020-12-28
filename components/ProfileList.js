@@ -36,7 +36,7 @@ const ProfileList = ({ navigation }) => {
               {authStore.user.username}
             </Title>
             <Caption style={styles.caption}>
-              {profileStore.userProfile.bio}
+              {/* {profileStore.userProfile.bio} */}
             </Caption>
           </View>
         </View>

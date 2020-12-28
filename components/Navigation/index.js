@@ -15,16 +15,13 @@ import CreatTripModel from "../CreatTripModel";
 import HomeButton from "../Buttons/HomeButton";
 import UpdateTripModel from "../UpdateTripModel";
 import ProfileGuest from "../ProfileGuest";
+import Explore from "../Explore";
 
 const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     <Navigator
-
-
-      initialRouteName="Signup"
-
-
+      initialRouteName="Signin"
       screenOptions={{
         headerTintColor: "white",
         headerStyle: {
@@ -103,7 +100,18 @@ const RootNavigator = () => {
           headerLeft: () => <HomeButton />,
         }}
       />
-
+      <Screen
+        name="Explore"
+        component={Explore}
+        options={{
+          headerStyle: {
+            backgroundColor: "orange",
+          },
+          title: "Trips",
+          headerRight: () => <ShowTripsButton />,
+          headerLeft: () => <HomeButton />,
+        }}
+      />
       <Screen
         name="TripDetail"
         component={TripDetail}

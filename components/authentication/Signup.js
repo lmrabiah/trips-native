@@ -40,7 +40,7 @@ const Signup = ({ navigation }) => {
     } else {
       await authStore.signup(user);
 
-      if (authStore.user) navigation.replace("Home");
+      if (authStore.user) navigation.replace("Explore");
     }
   };
 
