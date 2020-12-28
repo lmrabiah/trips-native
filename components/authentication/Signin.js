@@ -15,8 +15,6 @@ import {
 import authStore from "../../stores/authStore";
 
 const Signin = ({ navigation }) => {
-
-
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -24,37 +22,18 @@ const Signin = ({ navigation }) => {
     check_textInputPassword: false,
   });
 
-
   const handleSubmit = async () => {
-
-    if (authStore.user) navigation.replace("Profile");
-    if (
-      user.check_textInputPassword === false &&
-      user.check_textInputUserName === false
-    )
     if (user.username.length == 0 || user.password.length == 0) {
-
       Alert.alert(
         "Wrong Input!",
         "Username or password field cannot be empty."
       );
     } else {
-      await authStore.signin(user);
-
       if (authStore.user) {
+        await authStore.signin(user);
         navigation.replace("Profile");
         console.log("helllo");
-
-        console.log("Signin", user);
       }
-
-      Alert.alert("please write your password and username");
-    } else if (user.check_textInputUserName === false) {
-      Alert.alert("please write your username");
-    } else if (user.check_textInputPassword === false) {
-      Alert.alert("please write your password");
-    }
-
     }
   };
 
@@ -72,7 +51,7 @@ const Signin = ({ navigation }) => {
         check_textInputUserName: false,
       });
     }
-  }
+  };
 
   const textInputChangepassword = (val) => {
     if (val.length !== 0) {
@@ -115,6 +94,5 @@ const Signin = ({ navigation }) => {
     </AuthContainer>
   );
 };
-  
 
 export default observer(Signin);
