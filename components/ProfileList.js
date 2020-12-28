@@ -4,6 +4,7 @@ import profileStore from "../stores/profileStore";
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
 import TripList from "./TripList";
+import { AuthButton, AuthButtonText } from "../styles";
 
 import { observer } from "mobx-react";
 import {
@@ -46,6 +47,9 @@ const ProfileList = ({ navigation }) => {
           <Text> {listTrips.length} </Text>
         </View>
       </View>
+      <AuthButton onPress={() => navigation.navigate("CreatTripModel")}>
+        <AuthButtonText> Creat new trip</AuthButtonText>
+      </AuthButton>
       <EditProflieButton />
       <View style={styles.container}>
         <TripList trips={tripsUser} navigation={navigation} />

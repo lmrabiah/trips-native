@@ -5,6 +5,14 @@ import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
 
 const ProfileGuest = ({ navigation }) => {
+  const tripsUser = tripStore.trips.filter(
+    (trip) => trip.userId === authStore.user.id
+  );
+  console.log(tripsUser);
+
+  const listTrips = tripsUser;
+  console.log(listTrips.lenght);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userInfoSection}>
