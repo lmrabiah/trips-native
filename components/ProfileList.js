@@ -1,6 +1,6 @@
 import React from "react";
 import { View, SafeAreaView, StyleSheet, FlatList } from "react-native";
-import profileStore from "../stores/profileStore";
+
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
 import TripList from "./TripList";
@@ -15,6 +15,7 @@ import {
 } from "react-native-paper";
 
 import EditProflieButton from "./Buttons/EditProflieButton";
+import profileStore from "../stores/profileStore";
 
 const ProfileList = ({ navigation }) => {
   const tripsUser = tripStore.trips.filter(

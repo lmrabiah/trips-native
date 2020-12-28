@@ -29,11 +29,9 @@ const Signin = ({ navigation }) => {
         "Username or password field cannot be empty."
       );
     } else {
-      if (authStore.user) {
-        await authStore.signin(user);
-        navigation.replace("Profile");
-        console.log("helllo");
-      }
+      await authStore.signin(user);
+      navigation.replace("TripList");
+      console.log("helllo");
     }
   };
 
