@@ -20,7 +20,9 @@ const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = () => {
   return (
     <Navigator
+
       initialRouteName="Signup"
+
       screenOptions={{
         headerTintColor: "white",
         headerStyle: {

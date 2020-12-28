@@ -15,44 +15,31 @@ import authStore from "../../stores/authStore";
 const Signup = ({ navigation }) => {
   const [user, setUser] = useState({
     username: "",
-    // firstName: "",
-    // lastName: "",
-    // email: "",
+    firstName: "",
+    lastName: "",
+    email: "",
     password: "",
     check_textInputUserName: false,
     check_textInputPassword: false,
+    textInputChangefirstName: false,
   });
   const handleSubmit = async () => {
-    await authStore.signup(user);
-
-    if (authStore.user) navigation.replace("Profile"), { profile: profile };
-
-    if (authStore.user) navigation.replace("Profile");
 
     // else {
     //   Alert.alert("The username already exists");
 
-    if (user.username.length == 0 || user.password.length == 0) {
-      Alert.alert(
-        "Wrong Input!",
-        "Username or password field cannot be empty."
-      );
+    if (
+      user.username.length == 0 ||
+      user.password.length == 0 ||
+      user.firstname.length == 0 ||
+      user.lastname.length == 0 ||
+      user.email.length == 0
+    ) {
+      Alert.alert("Wrong Input!", "please fill all the field.");
+    } else {
+      await authStore.signup(user);
 
-      if (
-        user.check_textInputPassword === false &&
-        user.check_textInputUserName === false
-      ) {
-        Alert.alert("please write your password and username");
-        // } else if (user.check_textInputUserName === false) {
-        //   Alert.alert("please write your username");
-        // } else if (user.check_textInputPassword === false) {
-        //   Alert.alert("please write your password");
-      }
-
-      // } else {
-      //   Alert.alert(
-      //     "please make sure you have enterd the correct username and password"
-      //   );
+      if (authStore.user) navigation.replace("Profile");
     }
   };
 
@@ -85,8 +72,27 @@ const Signup = ({ navigation }) => {
         password: val,
         check_textInputPassword: false,
       });
+
+    }
+  };
+
+  const textInputChangefirstName = (val) => {
+    if (val.length !== 0) {
+      setUser({
+        ...user,
+        firstName: val,
+        check_textInputifirstName: true,
+      });
+    } else {
+      setUser({
+        ...user,
+        firstName: val,
+        check_textInputifirstName: false,
+      });
+
     // else {
     //   Alert.alert("The username already exists");
+
     }
   };
 
@@ -105,7 +111,7 @@ const Signup = ({ navigation }) => {
         placeholderTextColor="#A6AEC1"
       />
       <AuthTextInput
-        onChangeText={(firstName) => setUser({ ...user, firstName })}
+        onChangeText={(val) => textInputChangefirstName(val)}
         placeholder="FirstName"
         // autoCapitalize="none"
         placeholderTextColor="#A6AEC1"
