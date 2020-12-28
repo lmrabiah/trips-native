@@ -22,39 +22,25 @@ const Signin = ({ navigation }) => {
     check_textInputPassword: false,
   });
   const handleSubmit = async () => {
-    await authStore.signin(user);
-
-    if (authStore.user) {
-      navigation.replace("Profile");
-      console.log("helllo");
-
-      console.log("Signin", user);
-
-<<<<<<< HEAD
-      if (authStore.user) navigation.replace("Profile");
-      if (
-        user.check_textInputPassword === false &&
-        user.check_textInputUserName === false
-      ) {
-        Alert.alert("please write your password and username");
-      } else if (user.check_textInputUserName === false) {
-        Alert.alert("please write your username");
-      } else if (user.check_textInputPassword === false) {
-        Alert.alert("please write your password");
-      }
-=======
     if (authStore.user) navigation.replace("Profile");
     // if (
     //   user.check_textInputPassword === false &&
     //   user.check_textInputUserName === false
     // )
     if (user.username.length == 0 || user.password.length == 0) {
-      Alert.alert("please write your password and username");
-    } else if (user.check_textInputUserName === false) {
-      Alert.alert("please write your username");
-    } else if (user.check_textInputPassword === false) {
-      Alert.alert("please write your password");
->>>>>>> acb78c1e56d4364143e007126a60517ca62da9d5
+      Alert.alert(
+        "Wrong Input!",
+        "Username or password field cannot be empty."
+      );
+    } else {
+      await authStore.signin(user);
+
+      if (authStore.user) {
+        navigation.replace("Profile");
+        console.log("helllo");
+
+        console.log("Signin", user);
+      }
     }
   };
   const textInputChange = (val) => {
