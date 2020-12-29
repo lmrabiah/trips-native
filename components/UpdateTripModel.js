@@ -1,4 +1,5 @@
-import { View, Text, Button, Image } from "react-native";
+import { View, Text, Button, Image, Spinner } from "react-native";
+
 import { observer } from "mobx-react";
 import React, { useState, useEffect } from "react";
 import tripStore from "../stores/tripStore";
@@ -12,19 +13,19 @@ import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 import TripList from "./TripList";
 
-const UpdateTripModel = ({ navigation, OldTrip }) => {
-  const [trip, setTrip] = useState({
-    OldTrip,
-  });
+const UpdateTripModel = ({ route, navigation }) => {
+  const { trip } = route.params;
+  if (tripStore.loading) return <Spinner />;
+  const [newTrip, setNewTrip] = useState(trip);
 
   const handleSubmit = async () => {
-    await tripStore.updateTrip(trip);
-    if (tripStore.trips) navigation.navigate("TripList");
+    await tripStore.updateTrip(tripEdit);
+    navigation.navigate("Profile");
   };
 
-  const handleChange = (event) => {
-    setTrip({ ...trip, [event.target.title]: event.target.value });
-  };
+  // const handleChange = (event) => {
+  //   setTrip({ ...tripEdit, [event.target.name]: event.target.value });
+  // };
 
   const [image, setImage] = useState(null);
   useEffect(() => {
@@ -47,7 +48,6 @@ const UpdateTripModel = ({ navigation, OldTrip }) => {
       aspect: [4, 3],
       quality: 1,
     });
-
     if (!result.cancelled) {
       setImage(result.uri);
     }
@@ -56,19 +56,16 @@ const UpdateTripModel = ({ navigation, OldTrip }) => {
   return (
     <>
       <AuthContainer>
+        {/* <Header>Edit</Header> */}
         <AuthTextInput
-          onChangeText={handleChange}
-          // placeholder="title"
-          placeholderTextColor="#A6AEC1"
-          // autoCapitalize="none"
-          // value={trip.title}
+          value={newTrip.title}
+          onChangeText={(title) => setNewTrip({ ...newTrip, title })}
         />
         <AuthTextInput
-          //   defaultValue={selectedTrip.description}
-          onChangeText={(description) => setTrip({ ...trip, description })}
-          placeholder="Description"
-          placeholderTextColor="#A6AEC1"
-          autoCapitalize="none"
+          value={newTrip.description}
+          onChangeText={(description) =>
+            setNewTrip({ ...newTrip, description })
+          }
         />
       </AuthContainer>
 

@@ -1,4 +1,4 @@
-import { Button, Image, Platform, View } from "react-native";
+import { Button, Image, Platform, View, Text } from "react-native";
 import { observer } from "mobx-react";
 import React, { useState, useEffect } from "react";
 
@@ -21,7 +21,6 @@ const EditProfileModel = ({ navigation }) => {
   });
 
   // const [image, setImage] = useState(null);
-
   useEffect(async () => {
     if (Platform.OS !== "web") {
       const {
@@ -82,7 +81,6 @@ const EditProfileModel = ({ navigation }) => {
         />
       </AuthContainer>
       <AuthContainer>
-
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
@@ -103,7 +101,7 @@ const EditProfileModel = ({ navigation }) => {
         )}
 
         <AuthButton onPress={handleSubmit}>
-          <AuthButtonText> Done </AuthButtonText>
+          <Text> Done</Text>
         </AuthButton>
       </AuthContainer>
     </>

@@ -12,6 +12,7 @@ import {
   Caption,
   Text,
   TouchableRipple,
+  Button,
 } from "react-native-paper";
 
 import EditProflieButton from "./Buttons/EditProflieButton";

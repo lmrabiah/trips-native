@@ -1,10 +1,22 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import profileStore from "../stores/profileStore";
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
-
+import TripList from "./TripList";
+import {
+  Avatar,
+  Title,
+  Caption,
+  TouchableRipple,
+  Button,
+} from "react-native-paper";
 const ProfileGuest = ({ navigation }) => {
+  const tripsUser = tripStore.trips.filter(
+    (trip) => trip.userId === authStore.user.id
+  );
+  console.log(tripsUser);
+  const listTrips = tripsUser;
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userInfoSection}>
@@ -23,7 +35,7 @@ const ProfileGuest = ({ navigation }) => {
       <View style={styles.infoBoxWrapper}>
         <View style={styles.infoBox}>
           <Title>total trips</Title>
-          <Text> {listTrips.length} </Text>
+          {/* <Text> {listTrips.length} </Text> */}
         </View>
       </View>
       <View style={styles.container}>
