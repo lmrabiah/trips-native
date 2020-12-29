@@ -11,24 +11,25 @@ import {
   TouchableRipple,
   Button,
 } from "react-native-paper";
-const ProfileGuest = ({ navigation }) => {
-  const tripsUser = tripStore.trips.filter(
-    (trip) => trip.userId === authStore.user.id
+const ProfileGuest = ({ navigation, route }) => {
+  const { userId } = route.params;
+  const profile = profileStore.profiles.find(
+    (profile) => profile.userId === userId
   );
-  console.log(tripsUser);
+  // console.log(profileStore.profiles);
+  const tripsUser = tripStore.trips.filter((trip) => trip.userId === userId);
+  // console.log(userId);
   const listTrips = tripsUser;
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: "row", marginTop: 15 }}>
-          <Avatar.Image source={profileStore.userProfile.image} size={80} />
+          <Avatar.Image source={{ uri: profile.image }} size={80} />
           <View style={{ marginLeft: 20 }}>
             <Title style={[styles.title, { marginTop: 15, marginBottom: 5 }]}>
-              {authStore.user.username}
+              {profile.user.username}
             </Title>
-            <Caption style={styles.caption}>
-              {profileStore.userProfile.bio}
-            </Caption>
+            <Caption style={styles.caption}>{profile.bio}</Caption>
           </View>
         </View>
       </View>

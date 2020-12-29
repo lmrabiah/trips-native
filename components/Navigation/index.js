@@ -9,13 +9,14 @@ import ProfileList from "../ProfileList";
 import TripList from "../TripList";
 import ShowTripsButton from "../Buttons/ShowTripsButton";
 import TripDetail from "../TripDetail";
-import EditProfileModel from "../EditProfileModel";
 import authStore from "../../stores/authStore";
 import CreatTripModel from "../CreatTripModel";
 import HomeButton from "../Buttons/HomeButton";
 import UpdateTripModel from "../UpdateTripModel";
 import ProfileGuest from "../ProfileGuest";
+import Explore from "../Explore";
 
+import UpdateProfileModel from "../UpdateProfileModel";
 const { Navigator, Screen } = createStackNavigator();
 const RootNavigator = ({ title }) => {
   return (
@@ -75,26 +76,26 @@ const RootNavigator = ({ title }) => {
           },
         }}
       />
+
       <Screen
-        name="EditProfile"
-        component={EditProfileModel}
-        options={{
-          headerStyle: {
-            backgroundColor: "orange",
-          },
-          title: "Edit ProfileModel ",
-          headerRight: () => <ShowTripsButton />,
-          headerLeft: () => <HomeButton />,
+        name="UpdateProfileModel"
+        component={UpdateProfileModel}
+        options={({ route }) => {
+          const { profile } = route.params;
+          return {
+            headerRight: () => <ShowTripsButton />,
+            title: "Update profile",
+          };
         }}
       />
       <Screen
-        name="TripList"
-        component={TripList}
+        name="Explore"
+        component={Explore}
         options={{
           headerStyle: {
             backgroundColor: "orange",
           },
-          title: "Trips",
+          title: "Explore",
           headerRight: () => <ShowTripsButton />,
           headerLeft: () => <HomeButton />,
         }}

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, SafeAreaView, StyleSheet, FlatList } from "react-native";
-
+import { Icon } from "native-base";
 import authStore from "../stores/authStore";
 import tripStore from "../stores/tripStore";
 import TripList from "./TripList";
@@ -22,10 +22,11 @@ const ProfileList = ({ navigation }) => {
   const tripsUser = tripStore.trips.filter(
     (trip) => trip.userId === authStore.user.id
   );
-  console.log(tripsUser);
-
+  // console.log(tripsUser);
+  console.log("-----------");
   const listTrips = tripsUser;
-  console.log(listTrips.lenght);
+  // console.log(listTrips.lenght);
+  console.log(profileStore.userProfile);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,9 +49,17 @@ const ProfileList = ({ navigation }) => {
           <Text> {listTrips.length} </Text>
         </View>
       </View>
-      <EditProflieButton />
+      <EditProflieButton profile={profileStore.userProfile} />
       <View style={styles.container}>
         <TripList trips={tripsUser} navigation={navigation} />
+        <Button>
+          <Icon
+            onPress={authStore.signout}
+            onPress={() => navigation.replace("Home")}
+            type="MaterialCommunityIcons"
+            name="logout"
+          />
+        </Button>
       </View>
     </SafeAreaView>
   );

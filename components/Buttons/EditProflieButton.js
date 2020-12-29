@@ -12,12 +12,16 @@ import { AuthButton, AuthButtonText } from "../../styles";
 import { observer } from "mobx-react";
 import { useNavigation } from "@react-navigation/native";
 import tripStore from "../../stores/tripStore";
-const EditProflieButton = () => {
+const EditProflieButton = ({ profile }) => {
   const navigation = useNavigation();
   return (
     <Container>
       <AuthButton>
-        <AuthButtonText onPress={() => navigation.navigate("EditProfile")}>
+        <AuthButtonText
+          onPress={() =>
+            navigation.navigate("UpdateProfileModel", { profile: profile })
+          }
+        >
           Edit Profile
         </AuthButtonText>
       </AuthButton>

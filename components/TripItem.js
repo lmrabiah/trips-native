@@ -4,6 +4,7 @@ import { ListItem, Right, Left, Button } from "native-base";
 import { Image, Text } from "react-native";
 
 const TripItem = ({ trip, navigation }) => {
+  console.log(trip);
   return (
     <ListItem onPress={() => navigation.navigate("TripDetail", { trip: trip })}>
       <Right>
@@ -12,8 +13,11 @@ const TripItem = ({ trip, navigation }) => {
           source={{ uri: trip.image }}
         />
       </Right>
-      <Text onPress={() => navigation.navigate("Guest")}>
-        {trip.user.username}
+      <Text
+        onPress={() => navigation.navigate("Guest", { userId: trip.userId })}
+      >
+        {/* {trip.user.username} */}
+        {trip.username}
       </Text>
       <Text>{trip.title}</Text>
       <Left>

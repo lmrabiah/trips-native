@@ -31,16 +31,24 @@ class TripStore {
     }
   };
 
-  creatTrip = async (newTrip, user) => {
-    try {
-      const formData = new FormData();
+  // creatTrip = async (newTrip, user) => {
+  //   try {
+  //     const formData = new FormData();
 
-      for (const key in newTrip) formData.append(key, newTrip[key]);
-      const res = await instance.post(`/trips`, formData);
-      res.data.user = { usename: authStore.user.usename };
-      this.trips.push(res.data);
+  //     for (const key in newTrip) formData.append(key, newTrip[key]);
+  //     const res = await instance.post(`/trips`, formData);
+  //     res.data.user = { usename: authStore.user.usename };
+  //     this.trips.push(res.data);
+  //   } catch (error) {
+  //     console.error(console.error);
+  //   }
+  // };
+  creatTrip = async (newTrip) => {
+    try {
+      const response = await instance.post("/trips", newTrip);
+      this.trips.push(response.data);
     } catch (error) {
-      console.error(console.error);
+      console.error("tripStore --> addTrip", error);
     }
   };
 

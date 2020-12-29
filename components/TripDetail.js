@@ -18,7 +18,7 @@ function TripDetail({ route, navigation }) {
     navigation.navigate("TripList");
   };
   const handleSubmit = () => {
-    navigation.navigate("Guest");
+    navigation.navigate("Guest", { userId: trip.userId });
   };
   //   {
   //     if (authStore.user) () => tripStore.deleteTrip(trip.id);
@@ -57,13 +57,7 @@ function TripDetail({ route, navigation }) {
           <Text>Delete </Text>
         </Button>
         <Button
-          onPress={() =>
-            navigation.navigate(
-              "UpdateTripModel",
-              { navigation: navigation },
-              { route: route }
-            )
-          }
+          onPress={() => navigation.navigate("UpdateTripModel", { trip: trip })}
         >
           <Text>Update Trip </Text>
         </Button>

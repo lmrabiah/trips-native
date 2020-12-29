@@ -1,7 +1,7 @@
-import { View, Text, Button, Image, Spinner } from "react-native";
+import { View, Text, Button, Image } from "react-native";
 import { observer } from "mobx-react";
 import React, { useState, useEffect } from "react";
-import tripStore from "../stores/tripStore";
+import profileStore from "../stores/profileStore";
 import {
   AuthContainer,
   AuthButton,
@@ -12,14 +12,15 @@ import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 import TripList from "./TripList";
 
-const UpdateTripModel = ({ route, navigation }) => {
-  const { trip } = route.params;
-  if (tripStore.loading) return <Spinner />;
-  const [newTrip, setNewTrip] = useState(trip);
+const UpdateProfileModel = ({ route, navigation }) => {
+  const { profile } = route.params;
+
+  const [updateProfile, setUpdateProfile] = useState(profile);
 
   const handleSubmit = async () => {
-    await tripStore.updateTrip(newTrip);
-    navigation.navigate("Profile");
+    await profileStore.updateProfile(updateProfile);
+    navigation.replace("Profile");
+    console.log("updateProfile");
   };
 
   const [image, setImage] = useState(null);
@@ -51,17 +52,17 @@ const UpdateTripModel = ({ route, navigation }) => {
   return (
     <>
       <AuthContainer>
-        {/* <Header>Edit</Header> */}
+        <Text>Edit your Bio</Text>
         <AuthTextInput
-          value={newTrip.title}
-          onChangeText={(title) => setNewTrip({ ...newTrip, title })}
+          value={updateProfile.bio}
+          onChangeText={(bio) => setUpdateProfile({ ...updateProfile, bio })}
         />
-        <AuthTextInput
-          value={newTrip.description}
-          onChangeText={(description) =>
-            setNewTrip({ ...newTrip, description })
+        {/* <AuthTextInput
+          value={updateProfile.image}
+          onChangeText={(image) =>
+            setUpdateProfile({ ...updateProfile, image })
           }
-        />
+        /> */}
       </AuthContainer>
 
       <AuthContainer>
@@ -78,11 +79,11 @@ const UpdateTripModel = ({ route, navigation }) => {
         </View>
 
         <AuthButton onPress={handleSubmit}>
-          <AuthButtonText> update this trip </AuthButtonText>
+          <AuthButtonText> update this profile </AuthButtonText>
         </AuthButton>
       </AuthContainer>
     </>
   );
 };
 
-export default observer(UpdateTripModel);
+export default observer(UpdateProfileModel);
