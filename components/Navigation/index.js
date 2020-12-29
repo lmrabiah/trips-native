@@ -17,14 +17,10 @@ import UpdateTripModel from "../UpdateTripModel";
 import ProfileGuest from "../ProfileGuest";
 
 const { Navigator, Screen } = createStackNavigator();
-const RootNavigator = () => {
+const RootNavigator = ({ title }) => {
   return (
     <Navigator
-
-
       initialRouteName="Signup"
-
-
       screenOptions={{
         headerTintColor: "white",
         headerStyle: {
@@ -123,22 +119,34 @@ const RootNavigator = () => {
           headerStyle: {
             backgroundColor: "orange",
           },
-          title: "Trips",
+          title: "Creat new trip",
           headerRight: () => <ShowTripsButton />,
         }}
       />
+
       <Screen
         name="UpdateTripModel"
         component={UpdateTripModel}
-        options={{
-          headerStyle: {
-            backgroundColor: "orange",
-          },
-          title: "Trips",
-          headerRight: () => <ShowTripsButton />,
+        options={({ route }) => {
+          const { trip } = route.params;
+          return {
+            title: trip.title,
+            headerRight: () => <ShowTripsButton />,
+          };
         }}
       />
-      <Screen name="Guest" component={ProfileGuest} />
+
+      <Screen
+        name="Guest"
+        component={ProfileGuest}
+        // options={({ route }) => {
+        //   const { profile } = route.params;
+        //   return {
+        //     title: "profile",
+        //     headerRight: () => <ShowTripsButton />,
+        //   };
+        // }}
+      />
     </Navigator>
   );
 };

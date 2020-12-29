@@ -4,7 +4,8 @@ import { makeAutoObservable } from "mobx";
 class ProfileStore {
   profiles = [];
   loading = true;
-  userProfile = null;
+
+  userProfile = [];
 
   constructor() {
     makeAutoObservable(this);

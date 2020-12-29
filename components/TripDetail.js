@@ -5,7 +5,7 @@ import tripStore from "../stores/tripStore";
 import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import authStore from "../stores/authStore";
-import { ListItem, Right, Left, Button } from "native-base";
+import { ListItem, Right, Left, Button, Spinner } from "native-base";
 import TripList from "./TripList";
 import UpdateTripModel from "./UpdateTripModel";
 
@@ -17,7 +17,9 @@ function TripDetail({ route, navigation }) {
     tripStore.deleteTrip(trip.id);
     navigation.navigate("TripList");
   };
-
+  const handleSubmit = () => {
+    navigation.navigate("Guest");
+  };
   //   {
   //     if (authStore.user) () => tripStore.deleteTrip(trip.id);
   //     else {
@@ -59,13 +61,16 @@ function TripDetail({ route, navigation }) {
             navigation.navigate(
               "UpdateTripModel",
               { navigation: navigation },
-              { OldTrip: trip }
+              { route: route }
             )
           }
         >
           <Text>Update Trip </Text>
         </Button>
       </Left>
+      <Button onPress={handleSubmit}>
+        <Text>Profile</Text>
+      </Button>
     </ListItem>
   );
 }
