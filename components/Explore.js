@@ -6,20 +6,20 @@ import authStore from "../stores/authStore";
 import TripItem from "./TripItem";
 import CreatTripModel from "./CreatTripModel";
 import { useNavigation } from "@react-navigation/native";
+import TripList from "./TripList";
 
-const TripList = ({ trips, navigation }) => {
+const Explore = ({ navigation }) => {
   if (!authStore.user) navigation.replace("Signin");
   if (tripStore.loading) return <Spinner />;
-
-  const tripList = trips.map((trip) => (
-    <TripItem trip={trip} key={trip.id} navigation={navigation} />
-  ));
+  const tripsNotUser = tripStore.trips.filter(
+    (trip) => trip.userId !== authStore.user.id
+  );
 
   return (
     <Content>
-      <List>{tripList}</List>
+      <TripList trips={tripsNotUser} navigation={navigation} />
     </Content>
   );
 };
 
-export default observer(TripList);
+export default observer(Explore);

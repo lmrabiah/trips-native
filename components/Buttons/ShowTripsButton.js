@@ -8,14 +8,14 @@ import TripList from "../TripList";
 import authStore from "../../stores/authStore";
 import Signin from "../authentication/Signin";
 import CreatTripModel from "../CreatTripModel";
-import EditProfileModel from "../EditProfileModel";
+
 import UpdateTripModel from "../UpdateTripModel";
 
 const ShowTripsButton = () => {
   const navigation = useNavigation();
 
   const checkAuth = () => {
-    if (authStore.user) navigation.navigate("TripList");
+    if (authStore.user) navigation.navigate("Profile");
     else {
       navigation.replace("Signin");
     }
@@ -23,7 +23,7 @@ const ShowTripsButton = () => {
 
   return (
     <Container>
-      <Text onPress={checkAuth}> Trips </Text>
+      <Text onPress={checkAuth}> My Profile </Text>
     </Container>
   );
 };

@@ -21,10 +21,10 @@ const CreatTripModal = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await tripStore.creatTrip(trip);
-    if (tripStore.trip) {
-      navigation.navigate("Profile");
-    }
-    console.log(creatTrip);
+
+    navigation.navigate("Profile");
+
+    console.log(trip);
   };
 
   const [image, setImage] = useState(null);
